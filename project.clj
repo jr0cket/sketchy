@@ -31,7 +31,7 @@
   :resource-paths ["resources" "target/resources"]
 
   :cljsbuild {:builds [{:source-paths ["src/cljs"]
-                        :compiler {:output-to "target/resources/js/sketchy.js"
+                        :compiler {:output-to "target/resources/public/js/sketchy.js"
                                    :optimizations :whitespace
                                    :pretty-print true}}]}
 
