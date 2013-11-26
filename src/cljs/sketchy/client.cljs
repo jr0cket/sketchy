@@ -23,22 +23,6 @@
 
 (defn main []
   (let [canvas (sel1 :#canvas)
-        move (map< e->v (events canvas "mousemove"))
-        down (events canvas "mousedown")
-        up (events canvas "mouseup")]
-    (go
-     (let [ws (<! (ws-ch "ws://localhost:3000/ws"))]
-       (go-loop []
-         (draw-point canvas (read-string (:message (<! ws))))
-         (recur))
-       (go-loop [draw-point? false]
-         (let [[v sc] (alts! [move down up])]
-           (condp = sc
-             down (recur true)
-             up (recur false)
-             move (do (when draw-point?
-                        (js/console.log (pr-str v))
-                        (>! ws v))
-                      (recur draw-point?)))))))))
+        move (map< e->v (events canvas "mousemove"))]))
 
 (set! (.-onload js/window) main)

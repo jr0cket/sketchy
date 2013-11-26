@@ -18,16 +18,8 @@
     [:canvas#canvas {:width 640 :height 480 :style "border: 1px solid black;"}]
     [:p (str "You're visitor number " n)]]))
 
-(defn socket-handler [request]
-  (with-channel request ws-ch
-    (go-loop []
-      (let [{:keys [message]} (<! ws-ch)]
-        (>! ws-ch message)
-        (recur)))))
-
 (defroutes app-routes
   (GET "/" [] (index-view (swap! counter inc)))
-  (GET "/ws" [] socket-handler)
   (route/resources "/")
   (route/not-found "Not Found"))
 
