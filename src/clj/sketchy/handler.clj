@@ -5,9 +5,8 @@
             [hiccup.page :refer [html5 include-js]]
             [ring.middleware.reload :refer [wrap-reload]]
             [clojure.walk :refer [macroexpand-all]]
-            [clojure.core.async :refer [go go-loop >! <!]]
-            [chord.http-kit :refer [with-channel]]
-            ))
+            [clojure.core.async :as a :refer [go go-loop >! <!]]
+            [chord.http-kit :refer [with-channel]]))
 
 (def counter (atom 0))
 
