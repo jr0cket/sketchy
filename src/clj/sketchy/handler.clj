@@ -17,8 +17,7 @@
     (include-js "js/sketchy.js")]
    [:body
     [:canvas#canvas {:width 640 :height 480 :style "border: 1px solid black;"}]
-    [:p (str "You're visitor number " n)]
-    [:script "sketchy.client.main()"]]))
+    [:p (str "You're visitor number " n)]]))
 
 (defn socket-handler [request]
   (with-channel request ws-ch
