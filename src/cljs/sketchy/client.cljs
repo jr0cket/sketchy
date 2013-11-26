@@ -6,6 +6,9 @@
   (:require-macros [dommy.macros :refer [node sel1]]
                    [cljs.core.async.macros :refer [go go-loop]]))
 
+(.addEventListener js/window "mousemove"
+  (fn [e]
+    (js/console.log e)))
 
 (d/listen! js/window "mousemove"
   (fn [e]
