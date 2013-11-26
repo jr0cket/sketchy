@@ -23,6 +23,8 @@
 
 (defn main []
   (let [canvas (sel1 :#canvas)
-        move (map< e->v (events canvas "mousemove"))]))
+        move (map< e->v (events canvas "mousemove"))]
+    ;; your part goes here!
+    ))
 
 (set! (.-onload js/window) main)
